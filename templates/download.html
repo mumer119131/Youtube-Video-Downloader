@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="download-detail">
+    <h4>{{url.title}}</h4>
+    <img src="{{url.thumbnail_url}}" alt="">
+    <form action="{{url_for('download_video')}}" method="POST">
+        <select name="itag">
+            {% for i in url.streams %}
+            <option value="{{i.itag}}">{{i.resolution}}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Download</button>
+    </form>
+</div>
+
+{% endblock %}
